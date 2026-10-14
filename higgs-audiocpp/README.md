@@ -7,6 +7,8 @@ Higgs Audio v3 TTS (Q8_0 GGUF) served by the audio.cpp `audiocpp_server` on CUDA
 - The HTTP server listens on `127.0.0.1:8011` only. Access it through an SSH tunnel as user `worker`.
 - `SSH_PUBLIC_KEY` env: one ED25519 public key installed for `worker`.
 - `GGML_CUDA_DISABLE_GRAPHS=1` is set by default.
+- SSH host keys are not part of the image: create them per container with `ssh-keygen -A`
+  before starting sshd.
 
 Use an immutable digest, not the `cuda12` tag.
 
