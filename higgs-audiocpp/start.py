@@ -9,10 +9,13 @@ USER = "worker"
 
 
 def configure() -> Path:
-    """Write authorized_keys from SSH_PUBLIC_KEY and the server config; return the config path."""
+    """Write authorized_keys from WORKER_SSH_PUBLIC_KEY and the server config; return the config path.
+
+    The variable name is deliberately specific: hosts such as Vast.ai may set SSH_PUBLIC_KEY themselves.
+    """
     home = Path("/home") / USER
     account = pwd.getpwnam(USER)
-    public_key = os.environ.get("SSH_PUBLIC_KEY", "").strip()
+    public_key = os.environ.get("WORKER_SSH_PUBLIC_KEY", "").strip()
     if public_key:
         if "\n" in public_key or not public_key.startswith("ssh-ed25519 "):
             raise ValueError("Expected one ED25519 public key")
