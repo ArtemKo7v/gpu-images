@@ -1,0 +1,9 @@
+{
+  "id": "higgs-audio-v3",
+  "family": "higgs_audio_tts",
+  "path": "/opt/higgs/models/higgs-audio-v3-tts-4b-q8_0.gguf",
+  "url": "https://huggingface.co/audio-cpp/audio.cpp-gguf/resolve/f861648c0c1f4da9f18e9a0ce5e217b0679bb2f5/Higgs-Audio-v3-TTS-4B-GGUF/higgs-audio-v3-tts-4b-q8_0.gguf",
+  "revision": "f861648c0c1f4da9f18e9a0ce5e217b0679bb2f5",
+  "sha256": "79746822045b5bf8f9ab2bda87b16cd3f8ea3d9e319cbcf887a87aa1b537a74a",
+  "size_bytes": 5095354048
+}

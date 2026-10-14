@@ -1,0 +1,8 @@
+Built with Higgs TTS 3 licensed from Boson AI USA, Inc.
+Boson Higgs TTS 3 is licensed under the Boson Higgs TTS 3 Research and Non-Commercial License,
+Copyright (c) Boson AI USA, Inc. All Rights Reserved.
+The unmodified Q8_0 GGUF was converted by the upstream audio.cpp project; its revision and
+SHA-256 are recorded in model.json. The complete license is in licenses/HIGGS-LICENSE.
+
+audio.cpp: Copyright 2026 ShugoAI LLC, Apache License 2.0 (licenses/AUDIOCPP-LICENSE).
+ggml: MIT License (licenses/GGML-LICENSE).

@@ -1,0 +1,33 @@
+# Official prebuilt audio.cpp CUDA image (full-cuda12-20261010-715108a, CUDA 12.9.2),
+# pinned by amd64 digest; nothing is compiled here.
+FROM ghcr.io/0xshug0/audio.cpp@sha256:c468e580f130a2ef36bf3768ffec2120a3ccf05a291f02e1df03b05f93c62731
+USER root
+ARG AUDIOCPP_REVISION=715108a8efde4bb9831dd19771dc3a5efbbdc953
+LABEL org.opencontainers.image.source="https://github.com/ArtemKo7v/gpu-images" \
+    org.opencontainers.image.title="higgs-audiocpp" \
+    org.opencontainers.image.description="Higgs Audio v3 Q8_0 on audio.cpp CUDA, HTTP on 127.0.0.1:8011" \
+    org.opencontainers.image.version="$AUDIOCPP_REVISION"
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    openssh-server util-linux && rm -rf /var/lib/apt/lists/* \
+    && useradd --create-home --shell /bin/bash worker \
+    && mkdir -p /opt/higgs/models /home/worker/voices \
+    && chown worker:worker /home/worker/voices \
+    && ln -s /app/audiocpp_server /opt/higgs/audiocpp_server
+# A random unknown password unlocks the account for public-key SSH even with UsePAM=no.
+RUN python3 -c 'import secrets,subprocess; subprocess.run(["chpasswd"], input="worker:"+secrets.token_urlsafe(48)+"\n", text=True, check=True)'
+COPY licenses/ /opt/higgs/licenses/
+COPY NOTICE model.json start.py /opt/higgs/
+ENV LD_LIBRARY_PATH=/app:${LD_LIBRARY_PATH}
+# CUDA graphs crashed with "illegal instruction" on an RTX 3060 host.
+ENV GGML_CUDA_DISABLE_GRAPHS=1
+WORKDIR /opt/higgs
+# Weights are downloaded once at build time and verified by size and SHA-256.
+RUN python3 -c 'import json,subprocess; m=json.load(open("model.json")); subprocess.run(["curl","--fail","--location","--connect-timeout","30","--max-time","900","--retry","2","--retry-max-time","1200","--speed-limit","1048576","--speed-time","120","--output",m["path"],m["url"]], check=True)' \
+    && python3 -c 'import hashlib,json,pathlib; m=json.load(open("model.json")); p=pathlib.Path(m["path"]); assert p.stat().st_size==m["size_bytes"], "model size mismatch"; h=hashlib.file_digest(p.open("rb"),"sha256").hexdigest(); assert h==m["sha256"], "model SHA-256 mismatch"' \
+    && printf '%s\n' "$AUDIOCPP_REVISION" > /opt/higgs/audio-cpp-revision.txt
+# Link check; needs no GPU and does not load the model.
+RUN /opt/higgs/audiocpp_server --help > /opt/higgs/server-help.txt
+EXPOSE 22
+HEALTHCHECK --interval=10s --timeout=3s --start-period=120s \
+    CMD curl --fail --silent http://127.0.0.1:8011/health || exit 1
+ENTRYPOINT ["python3", "/opt/higgs/start.py"]
