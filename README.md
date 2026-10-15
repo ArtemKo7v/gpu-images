@@ -7,3 +7,4 @@ workflow and published as `ghcr.io/artemko7v/gpu-images/<directory>`.
 |---|---|
 | [higgs-audiocpp](higgs-audiocpp/README.md) | Higgs Audio v3 TTS, audio.cpp, CUDA 12.9 |
 | [qwen3-tts-audiocpp](qwen3-tts-audiocpp/README.md) | Qwen3-TTS Base, audio.cpp, CUDA 12.9 |
+| [chatterbox-multilingual](chatterbox-multilingual/README.md) | Chatterbox Multilingual V3, PyTorch, CUDA 12.4 |

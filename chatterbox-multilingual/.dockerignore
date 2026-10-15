@@ -1,0 +1,10 @@
+*
+!Dockerfile
+!requirements.txt
+!model.json
+!fetch_models.py
+!server.py
+!start.py
+!licenses/
+!licenses/**
+!NOTICE

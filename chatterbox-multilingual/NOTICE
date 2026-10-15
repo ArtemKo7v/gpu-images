@@ -1,0 +1,10 @@
+Chatterbox Multilingual TTS by Resemble AI is licensed under the MIT License
+(licenses/CHATTERBOX-LICENSE). Source: https://github.com/resemble-ai/chatterbox
+(commit 5de7a54aa4e5e2baadb0182dde554908b48b85c2); weights:
+https://huggingface.co/ResembleAI/chatterbox (revision 5bb1f6ee58e50c3b8d408bc82a6d3740c2db6e18),
+unmodified; file sizes and SHA-256 are recorded in model.json.
+
+Perth watermarker by Resemble AI: MIT License (licenses/PERTH-LICENSE), commit
+ff1c8ac55a976971245cdd53c18d6131ca00d993.
+
+spacy-pkuseg model spacy_ontonotes (downloaded unmodified from the spacy-pkuseg releases).
