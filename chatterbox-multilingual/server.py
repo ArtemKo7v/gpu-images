@@ -195,6 +195,10 @@ def main() -> None:
     args = parser.parse_args()
     os.environ.setdefault("TQDM_DISABLE", "1")  # no per-token progress bars in service logs
     logging.basicConfig(level=logging.INFO, format="%(asctime)s %(levelname)s %(message)s")
+    # Stress marks come with the input text; the optional upstream Russian stresser is not
+    # installed on purpose, and its per-request warning would flood the log.
+    for handler in logging.getLogger().handlers:
+        handler.addFilter(lambda record: "russian_text_stresser" not in record.getMessage())
     device = args.device
     if device == "auto":
         import torch
