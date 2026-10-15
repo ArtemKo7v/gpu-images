@@ -1,0 +1,14 @@
+{
+  "models": [
+    {
+      "id": "qwen3-tts-0.6b-base",
+      "family": "qwen3_tts",
+      "path": "/opt/qwen3-tts/models/qwen3-tts-12hz-0.6b-base-q8_0.gguf",
+      "url": "https://huggingface.co/audio-cpp/audio.cpp-gguf/resolve/f861648c0c1f4da9f18e9a0ce5e217b0679bb2f5/Qwen3-TTS-12Hz-0.6B-Base-GGUF/qwen3-tts-12hz-0.6b-base-q8_0.gguf",
+      "revision": "f861648c0c1f4da9f18e9a0ce5e217b0679bb2f5",
+      "sha256": "771420bd20ff5f35407b4fa9cf9c5461e153800d3d772ef51c9febc0a520855d",
+      "size_bytes": 1991211136,
+      "default_request_options": {"max_tokens": "2048"}
+    }
+  ]
+}

@@ -1,0 +1,7 @@
+Qwen3-TTS-12Hz-0.6B-Base by the Qwen team, Alibaba Cloud, is licensed under the Apache
+License 2.0 (licenses/QWEN-LICENSE). Source: https://huggingface.co/Qwen/Qwen3-TTS-12Hz-0.6B-Base
+(revision 5d83992436eae1d760afd27aff78a71d676296fc). The unmodified Q8_0 GGUF was converted
+by the upstream audio.cpp project; its revision and SHA-256 are recorded in model.json.
+
+audio.cpp: Copyright 2026 ShugoAI LLC, Apache License 2.0 (licenses/AUDIOCPP-LICENSE).
+ggml: MIT License (licenses/GGML-LICENSE).

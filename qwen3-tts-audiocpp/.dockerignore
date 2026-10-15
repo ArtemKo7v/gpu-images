@@ -1,0 +1,8 @@
+*
+!Dockerfile
+!model.json
+!fetch_models.py
+!start.py
+!licenses/
+!licenses/**
+!NOTICE
