@@ -5,7 +5,8 @@ linux/amd64.
 
 - Base image: official audio.cpp `full-cuda12-20261010-715108a`, pinned by digest.
 - Models: `model.json` lists every model with its revision, size and SHA-256; all of them
-  are included in the image and loaded at start. Currently: `qwen3-tts-0.6b-base` (Q8_0).
+  are included in the image and loaded at start. Currently: `qwen3-tts-0.6b-base` and
+  `qwen3-tts-1.7b-base` (both Q8_0); the request `model` field selects one.
 - The HTTP server listens on `127.0.0.1:8011` only. Access it through an SSH tunnel as user `worker`.
 - `WORKER_SSH_PUBLIC_KEY` env: one ED25519 public key installed for `worker`.
 - `GGML_CUDA_DISABLE_GRAPHS=1` is set by default.
@@ -37,5 +38,5 @@ curl -o out.wav http://127.0.0.1:8011/v1/audio/speech -H 'Content-Type: applicat
 
 ## Licenses
 
-Qwen3-TTS-12Hz-0.6B-Base: Apache License 2.0. audio.cpp: Apache License 2.0. ggml: MIT.
+Qwen3-TTS-12Hz-0.6B-Base and Qwen3-TTS-12Hz-1.7B-Base: Apache License 2.0. audio.cpp: Apache License 2.0. ggml: MIT.
 Full texts are in `licenses/` and in the image under `/opt/qwen3-tts/licenses/`.
